@@ -157,6 +157,9 @@ import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import './EditCar.css'; // Import the updated styles
 
+const API_BASE_URL = process.env.API_BACKEND;
+
+
 const EditCarPage = () => {
   const [car, setCar] = useState({ title: '', description: '', tags: [], images: [] });
   const [newImages, setNewImages] = useState([]); // To store newly selected images
@@ -171,7 +174,7 @@ const EditCarPage = () => {
       if (!token) return;
 
       try {
-        const response = await axios.get(`http://localhost:5000/api/cars/${id}`, {
+        const response = await axios.get(`${API_BASE_URL}/api/cars/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setCar(response.data);
@@ -227,7 +230,7 @@ const EditCarPage = () => {
     formData.append('deletedImages', JSON.stringify(deletedImages));
 
     try {
-      await axios.put(`http://localhost:5000/api/cars/${id}`, formData, {
+      await axios.put(`${API_BASE_URL}/api/cars/${id}`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'multipart/form-data',
@@ -288,7 +291,7 @@ const EditCarPage = () => {
             <div className="image-preview">
               {car.images.map((image, index) => (
                 <div key={index} className="image-item">
-                  <img src={`http://localhost:5000/${image}`} alt={`Car ${index}`} className="preview-img" />
+                  <img src={`${API_BASE_URL}/${image}`} alt={`Car ${index}`} className="preview-img" />
                   <button
                     type="button"
                     className="btn-delete"

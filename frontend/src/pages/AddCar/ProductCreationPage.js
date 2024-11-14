@@ -161,6 +161,9 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import './AddCar.css';
 
+const API_BASE_URL = process.env.API_BACKEND;
+
+
 const ProductCreationPage = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -199,7 +202,7 @@ const ProductCreationPage = () => {
     });
 
     try {
-      await axios.post('http://localhost:5000/api/cars', formData, {
+      await axios.post('${API_BASE_URL}/api/cars', formData, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
           'Content-Type': 'multipart/form-data',

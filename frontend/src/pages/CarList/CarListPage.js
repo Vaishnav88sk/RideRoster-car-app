@@ -111,6 +111,9 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './CarList.css'; // Import the styles
 
+const API_BASE_URL = process.env.API_BACKEND;
+
+
 const CarListPage = () => {
   const [cars, setCars] = useState([]);
   const [filteredCars, setFilteredCars] = useState([]);
@@ -128,7 +131,7 @@ const CarListPage = () => {
         }
 
         // Fetch cars with authentication
-        const response = await axios.get('http://localhost:5000/api/cars', {
+        const response = await axios.get('${API_BASE_URL}/api/cars', {
           headers: {
             Authorization: `Bearer ${token}`, // Include token in the Authorization header
           },
@@ -195,7 +198,7 @@ const CarListPage = () => {
           filteredCars.map((car) => (
             <div className="car-card" key={car._id}>
               <img
-                src={`http://localhost:5000/${car.images[0]}`}
+                src={`${API_BASE_URL}/${car.images[0]}`}
                 alt={car.title}
                 className="car-card-img"
               />
