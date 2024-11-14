@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import './signup.css'; // Import custom styles
+import './signup.css'; 
 
 const API_BASE_URL = process.env.API_BACKEND;
 
@@ -24,16 +24,15 @@ const SignupPage = () => {
       return;
     }
 
-    setLoading(true); // Start loading
+    setLoading(true); 
 
     try {
-      // Make a POST request to the signup API
-      await axios.post('${API_BASE_URL}/api/auth/signup', { username, email, password });
-      setLoading(false); // Stop loading
-      setError(''); // Reset error state
-      navigate('/profile'); // Redirect to login page after successful signup
+      await axios.post(`${API_BASE_URL}/api/auth/signup`, { username, email, password });
+      setLoading(false); 
+      setError(''); 
+      navigate('/profile'); 
     } catch (error) {
-      setLoading(false); // Stop loading
+      setLoading(false); 
       setError('Signup failed. Please try again later.');
     }
   };

@@ -131,7 +131,7 @@ const CarListPage = () => {
         }
 
         // Fetch cars with authentication
-        const response = await axios.get('${API_BASE_URL}/api/cars', {
+        const response = await axios.get(`${API_BASE_URL}/api/cars`, {
           headers: {
             Authorization: `Bearer ${token}`, // Include token in the Authorization header
           },

@@ -202,7 +202,7 @@ const ProductCreationPage = () => {
     });
 
     try {
-      await axios.post('${API_BASE_URL}/api/cars', formData, {
+      await axios.post(`${API_BASE_URL}/api/cars`, formData, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
           'Content-Type': 'multipart/form-data',

@@ -162,7 +162,7 @@ const CarDetailPage = () => {
         }
 
         // Include the token in the request headers
-        const response = await axios.get('${API_BASE_URL}/api/cars/${id}', {
+        const response = await axios.get(`${API_BASE_URL}/api/cars/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -188,7 +188,7 @@ const CarDetailPage = () => {
       console.log('Deleting car with ID:', id); // Log the car id to verify it's correct
 
       // Include token in Authorization header for authentication
-      await axios.delete('${API_BASE_URL}/api/cars/${id}', {
+      await axios.delete(`${API_BASE_URL}/api/cars/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
