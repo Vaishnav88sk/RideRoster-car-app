@@ -111,7 +111,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './CarList.css'; // Import the styles
 
-const API_BASE_URL = process.env.API_BACKEND;
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 
 const CarListPage = () => {

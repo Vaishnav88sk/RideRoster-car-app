@@ -142,7 +142,7 @@ import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import './CarDetail.css'; // Import custom styles
 
-const API_BASE_URL = process.env.API_BACKEND;
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 
 const CarDetailPage = () => {

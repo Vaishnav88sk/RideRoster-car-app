@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = process.env.API_BACKEND;
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 export const getCars = async () => {
   const response = await axios.get(`${API_BASE_URL}/api/cars`);

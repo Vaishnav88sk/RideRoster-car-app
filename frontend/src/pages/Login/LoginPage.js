@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import './Login.css'; // Import your custom styles
+import './Login.css'; 
 
-const API_BASE_URL = process.env.API_BACKEND;
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 
 const LoginPage = () => {
@@ -26,7 +26,7 @@ const LoginPage = () => {
       const response = await axios.post(`${API_BASE_URL}/api/auth/login`, { email, password });
       localStorage.setItem('token', response.data.token);
       setError('');
-      navigate('/profile'); // Redirect to home or cars page
+      navigate('/profile'); 
       window.location.reload();
     } catch (error) {
       setLoading(false);

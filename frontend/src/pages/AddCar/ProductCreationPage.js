@@ -161,7 +161,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import './AddCar.css';
 
-const API_BASE_URL = process.env.API_BACKEND;
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 
 const ProductCreationPage = () => {
