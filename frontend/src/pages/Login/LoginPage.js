@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import './Login.css'; 
+import './Login.css';
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
-
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -26,7 +25,7 @@ const LoginPage = () => {
       const response = await axios.post(`${API_BASE_URL}/api/auth/login`, { email, password });
       localStorage.setItem('token', response.data.token);
       setError('');
-      navigate('/profile'); 
+      navigate('/profile');
       window.location.reload();
     } catch (error) {
       setLoading(false);
@@ -34,92 +33,43 @@ const LoginPage = () => {
     }
   };
 
-//   return (
-//     <div className="container">
-//       <div className="screen">
-//       <h1>Car Management Application</h1>
-//         <div className="screen__content">
-        
-//           <form className="login" onSubmit={handleLogin}>
-//             <div className="login__field">
-//               <i className="login__icon fas fa-user"></i>
-//               <input
-//                 type="text"
-//                 className="login__input"
-//                 placeholder="User name / Email"
-//                 value={email}
-//                 onChange={(e) => setEmail(e.target.value)}
-//                 required
-//               />
-//             </div>
-//             <div className="login__field">
-//               <i className="login__icon fas fa-lock"></i>
-//               <input
-//                 type="password"
-//                 className="login__input"
-//                 placeholder="Password"
-//                 value={password}
-//                 onChange={(e) => setPassword(e.target.value)}
-//                 required
-//               />
-//             </div>
-//             <button className="button login__submit" type="submit" disabled={loading}>
-//               <span className="button__text">{loading ? 'Logging in...' : 'Log In Now'}</span>
-//               <i className="button__icon fas fa-chevron-right"></i>
-//             </button>
-//           </form>
-
-//           {error && <p className="text-danger text-center error-message">{error}</p>}
-
-//           <div className="signup-link">
-//             <p><b>Don't have an account?</b> <a href="/signup">Sign Up</a></p>
-//           </div>
-//         </div>
-//         {/* <div className="screen__background">
-       
-//           <span className="screen__background__shape screen__background__shape1"></span>
-//         </div> */}
-//       </div>
-//     </div>
-//   );
-// };
-
-return (
-  <div className="login-container">
-    <div className="login-box">
-      <h2>Car Management</h2>
-      <form className="login-form" onSubmit={handleLogin}>
-        <div className="input-group">
-          <input
-            type="email"
-            placeholder="Enter your email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
+  return (
+    <div className="login-container">
+      <div className="login-card">
+        <h2>Welcome Back!</h2>
+        <p className="welcome-text">Manage your cars effortlessly</p>
+        <form className="login-form" onSubmit={handleLogin}>
+          <div className="input-group">
+            <input
+              type="email"
+              placeholder="Email Address"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div className="input-group">
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          {error && <div className="error-message">{error}</div>}
+          <button type="submit" className="submit-btn" disabled={loading}>
+            {loading ? 'Logging in...' : 'Sign In'}
+          </button>
+        </form>
+        <div className="signup-link">
+          <p>
+            New here? <a href="/signup">Create an Account</a>
+          </p>
         </div>
-        <div className="input-group">
-          <input
-            type="password"
-            placeholder="Enter your password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        {error && <div className="error-message">{error}</div>}
-        <button type="submit" className="submit-btn" disabled={loading}>
-          {loading ? 'Logging in...' : 'Log In'}
-        </button>
-      </form>
-      <div className="signup-link">
-        <p>
-          Don't have an account? <a href="/signup">Sign Up</a>
-        </p>
       </div>
     </div>
-  </div>
-);
+  );
 };
 
 export default LoginPage;
